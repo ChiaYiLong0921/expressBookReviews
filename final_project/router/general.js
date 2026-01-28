@@ -4,6 +4,78 @@ let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
 const public_users = express.Router();
 
+const axios = require('axios');
+
+const getBooksList = (url) => {
+    const req = axios.get(url)
+    console.log(req);
+    req.then(resp => {
+        console.log("Books get");
+        console.log(resp.data);
+    })
+
+    .catch(err => {
+        console.log("Rejected for url " + url);
+        console.log(err.toString());
+        
+    })   
+}
+
+// getBooksList("https://echia0921-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/");
+
+const getBookDetails = (url) => {
+    const req = axios.get(url)
+    console.log(req);
+    req.then(resp => {
+        console.log("Book detail get");
+        console.log(resp.data);
+    })
+
+    .catch(err => {
+        console.log("Rejected for url " + url);
+        console.log(err.toString());
+        
+    })
+    
+}
+
+// getBookDetails("https://echia0921-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/isbn/1");
+
+const getBooksByAuthor = (url) => {
+    const req = axios.get(url)
+    console.log(req);
+    req.then(resp => {
+        console.log("Book detail get");
+        console.log(resp.data);
+    })
+
+    .catch(err => {
+        console.log("Rejected for url " + url);
+        console.log(err.toString());
+        
+    })
+    
+}
+
+// getBooksByAuthor("https://echia0921-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/author/Dante Alighieri/");
+
+const getBooksByTitle = (url) => {
+    const req = axios.get(url)
+    console.log(req);
+    req.then(resp => {
+        console.log("Book detail get");
+        console.log(resp.data);
+    })
+
+    .catch(err => {
+        console.log("Rejected for url " + url);
+        console.log(err.toString());
+        
+    })
+    
+}
+
+getBooksByTitle("https://echia0921-5000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/title/The Divine Comedy/");
 
 public_users.post("/register", (req,res) => {
   const username = req.body.username
